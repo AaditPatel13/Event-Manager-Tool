@@ -16,7 +16,7 @@
      $_SERVER["yolo"] = 5;
 
      if(isset($_POST['submit'])){
-     	$_SERVER["eventIDs"] = $_POST['eventIDs'];
+     	$_SERVER['eventIDs'] = $_POST['eventIDs'];
      }
 
         if($result){
