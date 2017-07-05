@@ -23,7 +23,7 @@
                     $email = $recordArray['email'];
                     $userPW = $recordArray['password'];
                     $accountType = $recordArray['accountType'];
-                    $firstName = $recordArray['firstname'];
+                    $firstName = $recordArray['firstName'];
 
                     if($_POST["password"] == $userPW && $_POST["email"] == $email && $accountType == 'M'){
                         $_SESSION['firstName'] = $firstName;
