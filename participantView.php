@@ -33,9 +33,13 @@
 
      $array = Array();
      $tempArr = Array();
+     if(!isset($_SESSION['viewIDs'])){
+        echo "<h2><strong>No Events to View</strong></h2>";
+     }
 
-    
-       $tempArr = $_SESSION['viewIDs'];
+    if(isset($_SESSION['viewIDs'])){
+        $tempArr = $_SESSION['viewIDs'];
+     }
 
      for($i = 0; $i < count($tempArr); $i++){
      	view($tempArr[$i], $array, $sqlQuery, $database);
