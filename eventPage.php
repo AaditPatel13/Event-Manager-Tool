@@ -37,6 +37,7 @@
             }
         }
     }
+    $_SESSION['viewIDs'] = Array();
     $array = Array();
     $db = new database("eventIDs");
     $database = $db->connectToDB();
