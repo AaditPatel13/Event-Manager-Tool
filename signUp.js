@@ -1,0 +1,47 @@
+window.onsubmit=main;
+
+function main() {
+  // "Sign up for free!"
+  if (document.getElementById("confirmPW").value) {
+    return validateForm();
+  }
+
+}
+
+function validateForm(){
+    var password1 = document.getElementById("password").value;
+    var password2 = document.getElementById("confirmPW").value;
+    var phone1 = document.getElementById("phoneFirstPart").value;
+    var phone2 = document.getElementById("phoneSecondPart").value;
+    var phone3 = document.getElementById("phoneThirdPart").value;
+    var age = document.getElementById("age").value;
+
+    var invalid = "";
+
+    if(password1 != password2){
+        invalid += "Passwords do not match\n";
+    }
+
+    if(String(parseInt(phone1)) !== phone1 || (String(parseInt(phone2)) !== phone2) || (String(parseInt(phone3)) !== phone3)){
+        invalid += "Invalid phone number\n";
+    }
+
+    if(String(phone1).length < 3 || String(phone2).length < 3 || String(phone3).length < 4){
+        invalid += "Invalid phone number\n";
+    }
+
+    if(String(parseInt(age)) !== age){
+        invalid += "Invalid age\n";
+    }
+
+    if(invalid !== ""){
+        alert(invalid);
+        return false;
+    } else{
+        if(window.confirm("Do you want to submit the form data?")){
+            return true;
+        } else{
+            return false;
+        }
+    }
+}

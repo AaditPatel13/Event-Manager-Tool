@@ -1,0 +1,68 @@
+<?php
+    require("support.php");
+    require("database.php");
+
+    if(isset($_POST["submit"])){
+        session_start();
+
+        $title = "";
+        $db = new database("users");
+        $database = $db->connectToDB();
+
+        $sqlQuery = sprintf("select * from {$db->getTable()}");
+        $result = mysqli_query($database, $sqlQuery);
+
+        if($result){
+            $numberOfRows = mysqli_num_rows($result);
+            if ($numberOfRows == 0) {
+                $body = "<h2>No entries exists in the table.</h2>";
+            } else {
+                $body = "";
+                $check = 0;
+                while ($recordArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    $email = $recordArray['email'];
+                    $userPW = $recordArray['password'];
+                    $accountType = $recordArray['accountType'];
+                    $firstName = $recordArray['firstname'];
+
+                    if($_POST["password"] == $userPW && $_POST["email"] == $email && $accountType == 'M'){
+                        $_SESSION['firstName'] = $firstName;
+                        $_SESSION['email'] = $email;
+                        $check = 1;
+                        header("Location: managerOptions.php");
+                    }
+                }
+                if($check == 0){
+                    $title = "<br><br><h1>No entry exists in our system for the specified email and password.</h1><br>";
+                    $body .= "<div class=\"text-center\">";
+                    $body .= "<form action=\"main.php\" method=\"post\">";
+                    $body .= "<input type=\"submit\" value=\"Back\" class=\"btn btn-warning btn-block\"/>";
+                    $body .= "</form>";
+                    $body .= "</div>";
+                }
+            }
+            mysqli_free_result($result);
+        } else{
+            $body = "Retrieving records failed.".mysqli_error($database);
+            $body .= "<form action=\"main.php\" method=\"post\">";
+            $body .= "<input type=\"submit\" value=\"Return to Main Menu\"/>";
+            $body .= "</form>";
+        }
+    } elseif(isset($_POST["return"])){
+        header("Location: main.php");
+    } else{
+        $body = <<<EOBODY
+    <form action="managerLogin.php" method="post">
+        <strong>Email: </strong><input type="email" name="email" placeholder="email@email.com"/><br><br>
+        <strong>Password: </strong><input type="password" name="password"/><br><br>
+        <input type="submit" name="submit" value="Submit"/><br><br>
+        <input type="submit" name="return" value="Return to Main Menu"/>
+    </form>
+
+EOBODY;
+    }
+
+    $page = generatePage($body, $title);
+    echo $page;
+
+?>

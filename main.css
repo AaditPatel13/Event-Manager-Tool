@@ -1,0 +1,71 @@
+.nav-tabs > li, .nav-pills > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+     zoom:1; /* hasLayout ie7 trigger */
+}
+
+.nav-tabs, .nav-pills {
+    text-align:center;
+}
+
+body {
+    background-image: url("img/3.jpg");
+    /*background-image: url("img/1.jpg");*/
+}
+
+.center-justified {
+    text-align: center;
+}
+
+div.transbox input {
+  margin: 10px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.6;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+  font-weight: bold;
+  color: #000000;
+}
+
+textarea {
+  color: rgba(113, 133, 133, 0.5);
+}
+
+table, th, td {
+	    border: solid 2.5px;
+}
+
+th, td {
+	    padding: 5px;
+	    text-align: left;
+} 
+
+img{
+    border-radius: 10px 50px;
+    background: url("pic.jpg");
+    padding: 20px; 
+    width: 400;
+    height: 350; 
+
+}
+
+#info{
+    padding: 15px;
+    border-left: 6px solid red;
+    background: #F5F5F5;
+    width: 300px;
+    font-size: 110%;
+    height: 125px; 
+    margin-left: 40px;
+    border-style: inset;
+}
+
+h2{
+  font-family: "Georgia";
+  font-style: oblique;
+  color:grey ;
+
+}
+
+

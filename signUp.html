@@ -1,0 +1,21 @@
+<script src="signUp.js"></script>
+<h1>Sign Up</h1>
+<form action="processSignUp.php" method="post">
+    <fieldset>
+        <legend>General Information</legend>
+        First Name: <input type="text" name="firstName" placeholder="First Name" required="required"/>
+        Last Name: <input type="text" name="lastName" placeholder="Last Name" required="required"/><br><br>
+        Email: <input type="email" name="email" placeholder="email@email.com" required="required"/><br><br>
+        Password: <input type="password" id="password" name="password" required="required"/>&nbsp&nbsp&nbsp&nbsp
+        Confirm Password: <input type="password" id="confirmPW" name="confirmPW" required="required"/><br><br>
+        Phone: <input  maxlength="3" size="1" type="text" id="phoneFirstPart" name="phoneFirstPart" required="required"/>
+         - <input maxlength="3" size="1" type="text" id="phoneSecondPart" name="phoneSecondPart" required="required"/>
+         - <input maxlength="4" size="1" type="text" id="phoneThirdPart" name="phoneThirdPart" required="required"/>
+         Age: <input type="text" id="age" name="age" required="required"/>&nbsp&nbsp&nbsp&nbsp
+         Account type:<input type="radio" name="accType" value="Participant" checked="checked"/>Participant
+                    <input type="radio" name="accType" value="Manager"/>Manager<br><br>
+        <input type="submit" name="submit" value="Sign Up" class="btn btn-default"/>&nbsp
+        <input type="reset" value="Reset Form" class="btn btn-default"/><br><br>
+        <input type="button" name="return" value="Return to Main Menu" onclick="window.location='main.php';"/>
+    </fieldset>
+</form>
